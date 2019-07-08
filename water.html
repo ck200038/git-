@@ -34,4 +34,41 @@
         });
     </script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.ripples/0.5.3/jquery.ripples.js"></script>
+</head>
+<body>
+    <div class="full-loading-image">
+
+    </div>
+
+    <script>
+        $(".full-loading-image").ripples({
+            resolution: 256, //越大水波传播 越慢 The width and height of the WebGL texture to render to. The larger this value, the smoother the rendering and the slower the ripples will propagate.
+            perturbance: 0.01, //https://github.com/sirxemic/jquery.ripples
+            // interactive:false, 影响鼠标拖动和点击 有无效果的属性
+            dropRadius:20,
+        })
+
+        // Automatic drops
+        $(document).ready(function () {
+            setInterval(function () {
+                var x =Math.random() * $(".full-loading-image").outerWidth();
+                var y =Math.random() * $(".full-loading-image").outerHeight();
+                var dropRadius = 20;
+                var strength = 0.04 + Math.random() * 0.04;
+                $(".full-loading-image") .ripples('drop', x, y, dropRadius, strength);
+                
+            },500);
+
+        });
+    </script>
+</body>
 </html>
