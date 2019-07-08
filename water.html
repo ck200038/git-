@@ -5,7 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
-    <script src="https://cdn.bootcss.com/jquery.ripples/0.5.3/jquery.ripples.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery.ripples/0.5.3/jquery.ripples.js"></script>
 </head>
 <body>
     <div class="full-loading-image">
@@ -18,8 +18,20 @@
             perturbance: 0.01, //https://github.com/sirxemic/jquery.ripples
             // interactive:false, 影响鼠标拖动和点击 有无效果的属性
             dropRadius:20,
-
         })
+
+        // Automatic drops
+        $(document).ready(function () {
+            setInterval(function () {
+                var x =Math.random() * $(".full-loading-image").outerWidth();
+                var y =Math.random() * $(".full-loading-image").outerHeight();
+                var dropRadius = 20;
+                var strength = 0.04 + Math.random() * 0.04;
+                $(".full-loading-image") .ripples('drop', x, y, dropRadius, strength);
+                
+            },500);
+
+        });
     </script>
 </body>
 </html>
